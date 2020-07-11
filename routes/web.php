@@ -17,3 +17,8 @@ Route::get('/', function () {
 
 Route::get('/produtos',['uses' =>'HomeController@index']);
 
+
+
+// Route::get('/historico',['uses' =>'HistoricoController@index']);
+
+

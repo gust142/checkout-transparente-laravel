@@ -86,9 +86,15 @@ body {
             <div class="container">
                 <h2>Lista de Produtos</h2>
                 <ul class="list-group">
-                    <li class="list-group-item">Produto 1</li>
-                    <li class="list-group-item">Produto 2</li>
-                    <li class="list-group-item">Produto 3</li>
+                    
+                    @foreach($lista as $produto)
+                          <li class="list-group-item">
+                          <h4>{{$produto->nome}}</h4>
+                          {{$produto->valor}}
+                          </li>
+
+                    @endforeach
+
                 </ul>
             </div>
             </div>
