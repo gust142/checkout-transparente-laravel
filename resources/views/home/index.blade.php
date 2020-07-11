@@ -23,13 +23,13 @@ body {
 
 .header {
   overflow: hidden;
-  background-color: #f1f1f1;
+  background-color: #286090;
   padding: 20px 10px;
 }
 
 .header a {
   float: left;
-  color: black;
+  color: white;
   text-align: center;
   padding: 12px;
   text-decoration: none;
@@ -41,6 +41,7 @@ body {
 .header a.logo {
   font-size: 25px;
   font-weight: bold;
+  color:white;
 }
 
 .header a:hover {
@@ -49,13 +50,14 @@ body {
 }
 
 .header a.active {
-  background-color: #286090;
+  /* background-color: #286090; */
   color: white;
 }
 
 .header-right {
   float: right;
 }
+
 
 @media screen and (max-width: 500px) {
   .header a {
@@ -85,8 +87,8 @@ body {
                     </svg>
                     <span class="badge badge-danger">{{Session::has('carrinho')?Session::get('carrinho')->quantidadeTotal:''}}</span>
                     </a>
-                    <a  href="#home">Histórico de Compras</a>
-                    <a  href="#home">Sair</a>
+                    <a class="active"  href="#home">Histórico de Compras</a>
+                    <a  class="active" href="#home">Sair</a>
                     
                 </div>
             </div>
