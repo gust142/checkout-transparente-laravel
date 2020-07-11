@@ -44,10 +44,7 @@ body {
   color:white;
 }
 
-.header a:hover {
-  background-color: #ddd;
-  color: black;
-}
+
 
 .header a.active {
   /* background-color: #286090; */
@@ -79,7 +76,7 @@ body {
     </head>
     <body>
             <div class="header">
-                <a href="#default" class="logo">Bem-Vindo,</a>
+                <a  class="logo">Bem-Vindo, {{Auth::user()->name}}</a>
                 <div class="header-right">
                     <a class="active" href="{{route('carrinho')}}">
                     <svg width="1.5em" height="1.5em" viewBox="0 0 16 16" class="bi bi-cart-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
@@ -88,7 +85,7 @@ body {
                     <span class="badge badge-danger">{{Session::has('carrinho')?Session::get('carrinho')->quantidadeTotal:''}}</span>
                     </a>
                     <a class="active"  href="#home">Histórico de Compras</a>
-                    <a  class="active" href="#home">Sair</a>
+                    <a  class="active" href="{{route('login.sair')}}">Sair</a>
                     
                 </div>
             </div>
