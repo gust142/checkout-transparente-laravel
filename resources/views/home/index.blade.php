@@ -49,7 +49,7 @@ body {
 }
 
 .header a.active {
-  background-color: dodgerblue;
+  background-color: #286090;
   color: white;
 }
 
@@ -79,8 +79,11 @@ body {
             <div class="header">
                 <a href="#default" class="logo">Bem-Vindo,</a>
                 <div class="header-right">
-                    <a class="active" href="#home">Carrinho
-                    <span class="badge">{{Session::has('carrinho')?Session::get('carrinho')->quantidadeTotal:''}}</span>
+                    <a class="active" href="{{route('carrinho')}}">
+                    <svg width="1.5em" height="1.5em" viewBox="0 0 16 16" class="bi bi-cart-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd" d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm7 0a1 1 0 1 0 0 2 1 1 0 0 0 0-2z"/>
+                    </svg>
+                    <span class="badge badge-danger">{{Session::has('carrinho')?Session::get('carrinho')->quantidadeTotal:''}}</span>
                     </a>
                     <a  href="#home">Histórico de Compras</a>
                     <a  href="#home">Sair</a>
@@ -95,9 +98,16 @@ body {
                     
                     @foreach($lista as $produto)
                           <li class="list-group-item">
+                          <a class="header-right btn btn-primary" href="{{route('produtos.add',['id' =>$produto->id])}}">
+                          <svg width="2em" height="2em" viewBox="0 0 16 16" class="bi bi-plus" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                              <path fill-rule="evenodd" d="M8 3.5a.5.5 0 0 1 .5.5v4a.5.5 0 0 1-.5.5H4a.5.5 0 0 1 0-1h3.5V4a.5.5 0 0 1 .5-.5z"/>
+                              <path fill-rule="evenodd" d="M7.5 8a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 0 1H8.5V12a.5.5 0 0 1-1 0V8z"/>
+                          </svg>
+                          </a>
                           <h4>{{$produto->nome}}</h4>
-                          {{$produto->valor}}
-                          <a class="header-right" href="{{route('produtos.add',$produto)}}">Adicionar</a>
+                          R$ {{$produto->valor}},00
+                          
+                          
                           </li>
 
                     @endforeach

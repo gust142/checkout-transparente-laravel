@@ -17,6 +17,7 @@ Route::get('/', function () {
 
 Route::get('/produtos',['as'=>'produtos','uses' =>'HomeController@index']);
 Route::get('/produtos/carrinho/{id}',['as'=>'produtos.add','uses' =>'HomeController@addToCart']);
+Route::get('/carrinho',['as'=>'carrinho','uses' =>'HomeController@Cart']);
 
 
 

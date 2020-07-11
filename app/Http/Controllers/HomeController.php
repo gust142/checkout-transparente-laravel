@@ -19,17 +19,24 @@ class HomeController extends Controller
     }
 
     public function addToCart(Request $request, $id){
+        
         $produto= new Produto();
         $produtoSelecionado = $produto->findById($id);
         $carrinhoAntigo = Session::has('carrinho')? Session::get('carrinho'): null;
         $carrinho = new Carrinho($carrinhoAntigo);
-        $carrinho->add($produtoSelecionado,$produto->id);
+        $carrinho->add($produtoSelecionado,$produtoSelecionado->id);
         $request->session()->put('carrinho',$carrinho);
         
         return redirect()->route('produtos');
     }
 
-    public function checkout(){
+    public function cart(){
+        if(!Session::has('carrinho')){
+            return view('carrinho.index',['produtos'=>null]);
+        }
+        $carrinhoAntigo = Session::get('carrinho');
+        $carrinho = new Carrinho($carrinhoAntigo);
+        return view('carrinho.index',['produtos'=>$carrinho->items,'valorTotal'=>$carrinho->valorTotal]);
 
     }
 }
