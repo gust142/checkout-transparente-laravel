@@ -67,15 +67,21 @@ body {
   .header-right {
     float: none;
   }
+  
 }
             
         </style>
+        <script>
+  
+  </script>
     </head>
     <body>
             <div class="header">
                 <a href="#default" class="logo">Bem-Vindo,</a>
                 <div class="header-right">
-                    <a class="active" href="#home">Carrinho</a>
+                    <a class="active" href="#home">Carrinho
+                    <span class="badge">{{Session::has('carrinho')?Session::get('carrinho')->quantidadeTotal:''}}</span>
+                    </a>
                     <a  href="#home">Histórico de Compras</a>
                     <a  href="#home">Sair</a>
                     
@@ -91,6 +97,7 @@ body {
                           <li class="list-group-item">
                           <h4>{{$produto->nome}}</h4>
                           {{$produto->valor}}
+                          <a class="header-right" href="{{route('produtos.add',$produto)}}">Adicionar</a>
                           </li>
 
                     @endforeach
@@ -99,4 +106,9 @@ body {
             </div>
             </div>
     </body>
+    @push('scripts')
+<script>
+  
+</script>
+@endpush
 </html>

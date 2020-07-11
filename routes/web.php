@@ -15,7 +15,12 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/produtos',['uses' =>'HomeController@index']);
+Route::get('/produtos',['as'=>'produtos','uses' =>'HomeController@index']);
+Route::get('/produtos/carrinho/{id}',['as'=>'produtos.add','uses' =>'HomeController@addToCart']);
+
+
+
+
 
 
 
