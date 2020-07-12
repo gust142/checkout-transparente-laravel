@@ -93,11 +93,28 @@
                             cursor: pointer;
                             width:100%;
                     }
-                    
             
         </style>
     </head>
     <body>
+            @if(Session::get('message'))
+            <div class="alert alert-danger" style="margin-bottom:0px;padding:5px" role="alert">
+                    
+                     
+                    <table style="width:100%">
+                      <tr>
+                        <td>
+                            <strong>{{Session::get('message')}}</strong>
+                        </td>
+                        <td>
+                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </td>
+                      </tr>
+                    </table>
+                </div>
+            @endif
             <div class="header">
                 <a class="logo">Iniciar Sessão</a>
                 
@@ -118,7 +135,7 @@
                                Cadastre-se
                           </a>
                         <label>
-                        <!-- <input type="checkbox" checked="checked" name="remember"> Remember me -->
+                        
                         </label>
                     </div>
 

@@ -70,7 +70,7 @@ class CheckoutController extends Controller
 
             $request->session()->forget('carrinho');
             
-        return redirect()->route('homepage');
+        return redirect()->route('homepage')->with('codRastreio', $codRastreio)->with('compra', $compra->id);
     }
 
     

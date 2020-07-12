@@ -31,11 +31,11 @@ Route::group(['middleware'=>'auth'] , function(){
     Route::get('/produtos/carrinho/{id}',['as'=>'produtos.add','uses' =>'HomeController@addToCart']);
     //Página do Carrinho
     Route::get('/carrinho',['as'=>'carrinho','uses' =>'HomeController@Cart']);
-
+    
     Route::get('/carrinho/adicionarQuantidade/{id}',['as'=>'carrinho.add','uses' =>'HomeController@addQtd']);
 
     Route::get('/carrinho/removerQuantidade/{id}',['as'=>'carrinho.remove','uses' =>'HomeController@removeQtd']);
-    
+
     Route::get('/carrinho/removerItem/{id}',['as'=>'carrinho.removeItem','uses' =>'HomeController@removeItem']);
     //Página do Checkout
     Route::get('/checkout',['as'=>'checkout','uses' =>'CheckoutController@index']);

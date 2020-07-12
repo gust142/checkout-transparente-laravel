@@ -12,6 +12,8 @@
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.css"  >
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.js"></script>
         <!-- Styles -->
         <style>
         * {box-sizing: border-box;}
@@ -75,6 +77,28 @@ body {
   </script>
     </head>
     <body>
+            @if(Session::get('codRastreio'))
+                <div class="alert alert-success" style="margin-bottom:0px;padding:5px" role="alert">
+                    
+                     
+                    <table style="width:100%">
+                      <tr>
+                        <td>
+                            <strong>Sua compra foi efetuada com sucesso! Obrigado pela preferência!</strong>
+                        </td>
+                        <td>
+                          <strong>Pedido:</strong> #{{Session::get('compra')}} <br>
+                          <strong>Código de Rastreio:</strong> {{Session::get('codRastreio')}}
+                        </td>
+                        <td>
+                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                        </td>
+                      </tr>
+                    </table>
+                </div>
+            @endif
             <div class="header">
                 <a  class="logo">Bem-Vindo, {{Auth::user()->name}}</a>
                 <div class="header-right">
@@ -114,6 +138,7 @@ body {
                 </ul>
             </div>
             </div>
+            @include('sweet::alert')
     </body>
     @push('scripts')
 <script>

@@ -18,11 +18,8 @@ class LoginController extends Controller
         if(Auth::attempt(['email'=>$dados['email'],'password'=>$dados['password']])){
             return redirect()->route('homepage');
         }else{
-            return redirect()->route('login');
+            return redirect()->route('login')->with('message', 'Usuário e/ou Senha incorretos. Por favor, tente novamente');
         }
-
-        
-       
    }
 
    public function logout(Request $request)

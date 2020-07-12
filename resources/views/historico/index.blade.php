@@ -90,7 +90,7 @@ body {
                 <ul class="list-group">
                     
                     @foreach($compras as $compra)
-                          <a data-toggle="collapse" href="#{{$compra['id']}}" class="list-group-item">
+                          <a data-toggle="collapse" style="background-color: #286090;color:white;margin-top:1%" href="#{{$compra['id']}}" class="list-group-item">
                           
                           <h4>Pedido #{{$compra['id']}} - {{$compra['dataCompra']}}</h4>
                           Total: R$ {{$compra['pagamento']['valor']}},00

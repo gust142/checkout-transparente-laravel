@@ -78,7 +78,7 @@ class RegisterController extends Controller
         $dados = $request->all();
 
         if(User::where('email',$dados['email'])->first()){
-            return redirect()->route('cadastro');
+            return redirect()->route('cadastro')->with('message', 'Não foi possível efetuar o cadastro: O E-mail já está sendo utilizado.');;
         }{
             $this->create($dados);
             return redirect()->route('login');

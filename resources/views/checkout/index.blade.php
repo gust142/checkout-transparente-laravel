@@ -12,6 +12,7 @@
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
         <!-- Styles -->
         <style>
                     * {box-sizing: border-box;}
@@ -74,21 +75,23 @@
                 position:absolute;
                 left:0%;
                 padding:2%;
-                height:calc(30vw + 30vh);
+                height:calc(29.3vw + 29.3vh);
             }
             .right{
                 width:30%;
                 position:absolute;
                 background-color:#286090;
                 right:0%;
-                height:calc(30vw + 30vh);
+                height:calc(29.3vw + 29.3vh);
             }
             
             
             
         </style>
         <script>
-            
+            $('#myModal').on('shown.bs.modal', function () {
+                    $('#myInput').trigger('focus')
+            })
         </script>
     </head>
     <body>
@@ -141,7 +144,7 @@
                                
                                 </label>
                                 
-                                <button type="submit" class="btn btn-success btn-lg btn-block">
+                                <button type="button" data-toggle="modal" data-target="#exampleModal" class="btn btn-success btn-lg btn-block">
                                     <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-check-circle-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                                         <path fill-rule="evenodd" d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"/>
                                     </svg>
@@ -165,6 +168,26 @@
                                             </div>
                                     </div>
                             </div> 
+
+                            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalLabel">Confirmação</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        Deseja finalizar esta compra?
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Não</button>
+                                        <button type="submit" class="btn btn-primary">Sim</button>
+                                    </div>
+                                    </div>
+                                </div>
+                            </div>
                         </form>
                     
                     
@@ -174,9 +197,7 @@
                 
             @else
                 
-            @endif
-
-            
+            @endif      
     </body>
 
 </html>

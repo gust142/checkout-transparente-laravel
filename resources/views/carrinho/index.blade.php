@@ -43,6 +43,15 @@
                 font-weight: bold;
                 color:white;
                 }
+                .btn-circle {
+                    width: 30px;
+                    height: 30px;
+                    text-align: center;
+                    padding: 6px 0;
+                    font-size: 12px;
+                    line-height: 1.428571429;
+                    border-radius: 15px;
+                }
 
                 
 
@@ -54,6 +63,7 @@
                 .header-right {
                 float: right;
                 }
+                
 
                 @media screen and (max-width: 500px) {
                 .header a {
@@ -90,17 +100,32 @@
                           
                           <li class="list-group-item">
                           <h4 style="position:absolute; right:3%">Quantidade: {{$produto['qtd']}} {{$produto['qtd']>1?'unidades':'unidade'}}</h4>
-                          <h4>{{$produto['item']['nome']}}</h4>
-                          R$ {{$produto['valor']}},00
-                          <a  class="btn btn-success btn-lg" href="{{route('carrinho.add',$produto['item']['id'])}}" > 
-                               add
-                          </a>
-                          <a  class="btn btn-success btn-lg" href="{{route('carrinho.remove',$produto['item']['id'])}}" > 
-                               remove
-                          </a>
-                          <a  class="btn btn-danger btn-lg" href="{{route('carrinho.removeItem',$produto['item']['id'])}}" > 
-                              Remover Item
-                          </a>
+                          <h4>{{$produto['item']['nome']}}</h4> 
+                            <table style="width:100%;">
+                                <tr>
+                                <td style="width:65%;"> <h4 style="">R$ {{$produto['valor']}},00</h4></td>
+                                    <td style="width:4%;">
+                                        <a  class="btn btn-circle btn-success" href="{{route('carrinho.add',$produto['item']['id'])}}" > 
+                                            <i class="glyphicon glyphicon-plus"></i>
+                                        </a>
+                                    </td>
+                                    <td style="width:3%;">
+                                        <h4 style="">{{$produto['qtd']}}<h4>
+                                    </td>
+                                    <td style="width:10%;">
+                                        <a  style="background-color: #286090; color:white" class="btn btn-circle" href="{{route('carrinho.remove',$produto['item']['id'])}}" > 
+                                            <i class="glyphicon glyphicon-minus"></i>
+                                        </a>
+                                    </td>
+                                    <td style="width:5%;">
+                                        <a  class="btn btn-danger " href="{{route('carrinho.removeItem',$produto['item']['id'])}}" > 
+                                            <svg width="2em" height="2em" viewBox="0 0 16 16" class="bi bi-trash-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                                <path fill-rule="evenodd" d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5a.5.5 0 0 0-1 0v7a.5.5 0 0 0 1 0v-7z"/>
+                                            </svg>
+                                        </a>
+                                    </td>
+                                </tr>
+                            </table>
                           </li>
 
                     @endforeach
@@ -139,6 +164,7 @@
                 </ul>
             </div>
             @endif
+            
     </body>
 
 </html>
