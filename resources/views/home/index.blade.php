@@ -84,7 +84,7 @@ body {
                     </svg>
                     <span class="badge badge-danger">{{Session::has('carrinho')?Session::get('carrinho')->quantidadeTotal:''}}</span>
                     </a>
-                    <a class="active"  href="#home">Histórico de Compras</a>
+                    <a class="active"  href="{{route('historico')}}">Histórico de Compras</a>
                     <a  class="active" href="{{route('login.sair')}}">Sair</a>
                     
                 </div>

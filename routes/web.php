@@ -24,11 +24,12 @@ Route::group(['middleware'=>'auth'] , function(){
     Route::get('/carrinho',['as'=>'carrinho','uses' =>'HomeController@Cart']);
     Route::get('/checkout',['as'=>'checkout','uses' =>'CheckoutController@index']);
     Route::post('/finalizar',['as'=>'finalizar','uses' =>'CheckoutController@finalizar']);
+    Route::get('/historico',['as'=>'historico','uses' =>'HistoricoController@index']);
 });
 
 
 
 
-// Route::get('/historico',['uses' =>'HistoricoController@index']);
+
 
 

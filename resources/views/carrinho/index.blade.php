@@ -80,7 +80,7 @@
                 <div class="header-right">
                     </a>
                     <a class="active"  href="{{route('produtos')}}">Continuar comprando</a>
-                    <a class="active"  href="#home">Sair</a>
+                    <a class="active"  href="{{route('login.sair')}}">Sair</a>
                     
                 </div>
             </div>

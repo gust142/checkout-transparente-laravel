@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Compra extends Model
 {
     protected $fillable = [
-        'pagamentoId', 'userId','enderecoId','transportadoraId'
+        'pagamentoId', 'userId','enderecoId','transportadoraId','codRastreio'
     ];
     public function lista(){
         return Compra::all();

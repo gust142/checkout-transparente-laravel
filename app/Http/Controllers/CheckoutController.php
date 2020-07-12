@@ -39,6 +39,8 @@ class CheckoutController extends Controller
 
         
         $carrinho = new Carrinho($carrinhoAntigo); //informações do carrinho
+        
+        dd(Pagamento::all());
         //armazenar endereço
         $enderecoCriado = Endereco::create(['descricao'=>$dadosRequest['endereco'],'userId'=>Auth::user()->id]);
         //procurar transportadora por id para buscar o valor do frete
@@ -49,14 +51,25 @@ class CheckoutController extends Controller
             'tipoPagamentoId'=>(integer)$dadosRequest['pagamentoId']
             ]);
         //inserção na tabela de compra
+        $codRastreio = 'AA'. rand(100000000,999999999) ."BR";
         $compra = Compra::create([
             'pagamentoId'=>$pagamento->id,
             'userId'=>Auth::user()->id,
             'enderecoId'=>$enderecoCriado->id,
-            'transportadoraId'=>$transportadora->id
+            'transportadoraId'=>$transportadora->id,
+            'codRastreio' =>$codRastreio
             ]);
-         
+            foreach ($carrinho->items as $produto) {
+                $pagamento = CompraProduto::create([
+                    'compraId'=>$compra->id,
+                    'produtoId'=>$produto['item']->id,
+                    'quantidade'=>$produto['qtd'],
+                    'valor'=>$produto['valor']
+                    ]);
+            }
 
+            $request->session()->forget('carrinho');
+            
         return redirect()->route('homepage');
     }
 

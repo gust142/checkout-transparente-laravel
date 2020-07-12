@@ -19,6 +19,7 @@ class CreateComprasTable extends Migration
             $table->integer('userId')->unsigned();
             $table->integer('enderecoId')->unsigned();
             $table->integer('transportadoraId')->unsigned();
+            $table->integer('codRastreio');
             $table->foreign('pagamentoId')->references('id')->on('pagamentos');
             $table->foreign('userId')->references('id')->on('users');
             $table->foreign('enderecoId')->references('id')->on('enderecos');
