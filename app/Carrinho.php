@@ -1,13 +1,13 @@
 <?php
 
 namespace App;
-
+use Auth;
 class Carrinho 
 {
     public $items = null;
     public $quantidadeTotal = 0;
     public $valorTotal = 0;
-
+    public $userId = 0;
 
     public function __construct($oldCart){
         
@@ -15,11 +15,12 @@ class Carrinho
                 $this->items = $oldCart->items;
                 $this->quantidadeTotal = $oldCart->quantidadeTotal;
                 $this->valorTotal = $oldCart->valorTotal;
+                $this->userId = $oldCart->userId;
             }
             // dd($oldCart);
     }
 
-    public function add($item,$id){
+    public function add($item,$id,$userId){
         
         $itemGuardado = ['qtd' => 0, 'valor' =>$item->valor, 'item' =>$item  ];
         if($this->items){
@@ -33,6 +34,7 @@ class Carrinho
         $this->items[$id] = $itemGuardado;
         $this->quantidadeTotal++;
         $this->valorTotal += $item->valor;
+        $this->userId = $userId;
         
     }
 }

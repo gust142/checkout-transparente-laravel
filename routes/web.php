@@ -17,13 +17,13 @@ Route::post('/login/entrar',['as'=>'login.entrar','uses' =>'Auth\LoginController
 Route::get('/login/sair',['as'=>'login.sair','uses' =>'Auth\LoginController@logout']);
 
 
-
-
 Route::group(['middleware'=>'auth'] , function(){
     Route::get('/',['as'=>'homepage','uses' =>'HomeController@index']);
     Route::get('/produtos',['as'=>'produtos','uses' =>'HomeController@index']);
     Route::get('/produtos/carrinho/{id}',['as'=>'produtos.add','uses' =>'HomeController@addToCart']);
     Route::get('/carrinho',['as'=>'carrinho','uses' =>'HomeController@Cart']);
+    Route::get('/checkout',['as'=>'checkout','uses' =>'CheckoutController@index']);
+    Route::post('/finalizar',['as'=>'finalizar','uses' =>'CheckoutController@finalizar']);
 });
 
 

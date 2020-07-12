@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Auth;
 use Illuminate\Http\Request;
 use App\Produto;
 use App\Carrinho;
@@ -24,7 +25,8 @@ class HomeController extends Controller
         $produtoSelecionado = $produto->findById($id);
         $carrinhoAntigo = Session::has('carrinho')? Session::get('carrinho'): null;
         $carrinho = new Carrinho($carrinhoAntigo);
-        $carrinho->add($produtoSelecionado,$produtoSelecionado->id);
+        
+        $carrinho->add($produtoSelecionado,$produtoSelecionado->id,Auth::user()->id);
         $request->session()->put('carrinho',$carrinho);
         
         return redirect()->route('produtos');
@@ -36,7 +38,8 @@ class HomeController extends Controller
         }
         $carrinhoAntigo = Session::get('carrinho');
         $carrinho = new Carrinho($carrinhoAntigo);
-        return view('carrinho.index',['produtos'=>$carrinho->items,'valorTotal'=>$carrinho->valorTotal]);
+        
+        return view('carrinho.index',['id',$carrinho->userId,'produtos'=>$carrinho->items,'valorTotal'=>$carrinho->valorTotal]);
 
     }
 }
