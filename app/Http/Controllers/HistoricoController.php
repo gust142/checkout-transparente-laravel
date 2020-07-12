@@ -16,7 +16,7 @@ class HistoricoController extends Controller
 {
     public function index(){
         $lista = Compra::where('userId', Auth::user()->id)->get();
-        $compras;
+        $compras = [];
         // dd($lista);
         foreach($lista as $compra){
             $pagamento = (object) Pagamento::find($compra->pagamentoId);

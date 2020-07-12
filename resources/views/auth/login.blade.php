@@ -9,6 +9,9 @@
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
             
         <!-- Styles -->
         <style>
@@ -81,6 +84,15 @@
                             cursor: pointer;
                             width:100%;
                     }
+                    .button {
+                            background-color: #286090;
+                            color: white;
+                            padding: 14px 20px;
+                            margin: 8px 0;
+                            border: none;
+                            cursor: pointer;
+                            width:100%;
+                    }
                     
             
         </style>
@@ -100,8 +112,11 @@
                         <label for="psw"><b>Senha</b></label>
                         <input type="password" placeholder="Senha" name="password" required>
 
-                        <button >Entrar</button>
-                        <button type="button" class="cancelbtn">Cadastre-se</button>
+                        <button class="btn btn-lg btn-block">Entrar</button>
+                        <!-- <a  href="{{route('cadastro')}}" class="button"></a> -->
+                        <a  class="btn button btn-lg btn-block" href="{{route('cadastro')}}" > 
+                               Cadastre-se
+                          </a>
                         <label>
                         <!-- <input type="checkbox" checked="checked" name="remember"> Remember me -->
                         </label>

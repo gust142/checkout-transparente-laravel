@@ -16,6 +16,9 @@ Route::get('/login',['as'=>'login','uses' =>'Auth\LoginController@index']);
 Route::post('/login/entrar',['as'=>'login.entrar','uses' =>'Auth\LoginController@login']);
 Route::get('/login/sair',['as'=>'login.sair','uses' =>'Auth\LoginController@logout']);
 
+Route::get('/cadastro',['as'=>'cadastro','uses' =>'Auth\RegisterController@index']);
+Route::post('/cadastro/cadastrar',['as'=>'cadastrar','uses' =>'Auth\RegisterController@cadastrar']);
+
 
 Route::group(['middleware'=>'auth'] , function(){
     Route::get('/',['as'=>'homepage','uses' =>'HomeController@index']);

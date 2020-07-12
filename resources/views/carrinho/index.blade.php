@@ -44,10 +44,7 @@
                 color:white;
                 }
 
-                .header a:hover {
-                    background-color: #ddd;
-                    color: black;
-                }
+                
 
                 .header a.active {
                     /* background-color: #286090; */
@@ -76,7 +73,7 @@
     </head>
     <body>
             <div class="header">
-                <a href="#default" class="logo">Carrinho</a>
+                <a  class="logo">Carrinho</a>
                 <div class="header-right">
                     </a>
                     <a class="active"  href="{{route('produtos')}}">Continuar comprando</a>

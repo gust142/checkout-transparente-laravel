@@ -6,6 +6,7 @@ use App\User;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use Illuminate\Http\Request;
 
 class RegisterController extends Controller
 {
@@ -68,4 +69,23 @@ class RegisterController extends Controller
             'password' => bcrypt($data['password']),
         ]);
     }
+    public function index(){
+
+        return view('auth.cadastro');
+   }
+
+   public function cadastrar(Request $request){
+        $dados = $request->all();
+
+        if(User::where('email',$dados['email'])->first()){
+            return redirect()->route('cadastro');
+        }{
+            $this->create($dados);
+            return redirect()->route('login');
+        }
+
+    
+    
+   }
+
 }
