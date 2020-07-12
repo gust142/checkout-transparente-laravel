@@ -84,7 +84,54 @@ body {
                     
                 </div>
             </div>
+            <div style="padding-left:40px;padding-right:40px;">
+            <div class="container">
+                <h2></h2>
+                <ul class="list-group">
+                    
+                    @foreach($compras as $compra)
+                          <a data-toggle="collapse" href="#{{$compra['id']}}" class="list-group-item">
+                          
+                          <h4>Pedido #{{$compra['id']}} - {{$compra['dataCompra']}}</h4>
+                          Total: R$ {{$compra['pagamento']['valor']}},00
+                          
+                          
+                          </a>
+                          <div class="collapse" id="{{$compra['id']}}" style="border-left:1px solid #286090;border-right:1px solid #286090;border-bottom:1px solid #286090;">
+                                <div class="card card-body" style="padding:3%;">                                  
+                                    <table style="width:100%">
+                                      <tr>
+                                        <td style="width:60%;">
+                                            <h4><strong>Transportadora:</strong> {{$compra['transportadora']['nome']}}</h4>
+                                            <h4><strong>Código de Rastreio:</strong> {{$compra['codRastreio']}}</h4>
+                                            <h4><strong>Forma de Pagamento:</strong> {{$compra['tipoPagamento']['nome']}}</h4>
+                                            <h4><strong>Endereço de Entrega:</strong> {{$compra['endereco']['descricao']}}</h4>
+                                        </td>
+                                        <td>
+                                          <ul class="list-group">
 
+                                              <p style="text-align:center"><strong>Lista de produtos</strong></p>
+                                                    @foreach($compra['produtos'] as $produto)
+                                                    <li class="list-group-item">
+                                                    <h5>{{$produto['produto']['nome']}} - {{$produto['quantidade']}} {{$produto['quantidade']>1?'unidades':'unidade'}} R${{$produto['valor']}},00</h5>
+                                                    </li>
+                                                    @endforeach
+
+                                          </ul>
+                                          <h5><strong>Valor total dos produtos:</strong> R$ {{$compra['pagamento']['valor'] - $compra['transportadora']['valor']}},00</h5>
+                                          <h5><strong>Valor do frete:</strong>  R$ {{$compra['transportadora']['valor']}},00</h5>
+                                          <h3><strong>Valor Final: R$ {{$compra['pagamento']['valor']}},00</strong></h3>
+                                        </td>
+                                      </tr>
+                                    </table>
+                                  
+                                </div>
+                          </div>
+                    @endforeach
+
+                </ul>
+            </div>
+            </div>
     </body>
    
 </html>

@@ -40,7 +40,7 @@ class CheckoutController extends Controller
         
         $carrinho = new Carrinho($carrinhoAntigo); //informações do carrinho
         
-        dd(Pagamento::all());
+        
         //armazenar endereço
         $enderecoCriado = Endereco::create(['descricao'=>$dadosRequest['endereco'],'userId'=>Auth::user()->id]);
         //procurar transportadora por id para buscar o valor do frete
