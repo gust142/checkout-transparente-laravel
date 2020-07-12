@@ -29,17 +29,49 @@ class HomeController extends Controller
         $carrinho->add($produtoSelecionado,$produtoSelecionado->id,Auth::user()->id);
         $request->session()->put('carrinho',$carrinho);
         
-        return redirect()->route('produtos');
+        return redirect()->route('homepage');
     }
 
     public function cart(){
         if(!Session::has('carrinho')){
-            return view('carrinho.index',['produtos'=>null]);
+            return view('carrinho.index',['produtos'=>[]]);
         }
         $carrinhoAntigo = Session::get('carrinho');
         $carrinho = new Carrinho($carrinhoAntigo);
         
         return view('carrinho.index',['id',$carrinho->userId,'produtos'=>$carrinho->items,'valorTotal'=>$carrinho->valorTotal]);
 
+    }
+
+    public function addQtd( Request $request,$id){
+        $carrinhoAntigo = Session::get('carrinho');
+        $carrinho = new Carrinho($carrinhoAntigo);
+
+        $carrinho->addQtd($id);
+        $request->session()->put('carrinho',$carrinho);
+        return redirect()->route('carrinho');
+    }
+
+    public function removeQtd(Request $request,$id){
+        $carrinhoAntigo = Session::get('carrinho');
+        $carrinho = new Carrinho($carrinhoAntigo);
+
+        $carrinho->removeQtd($id);
+        $request->session()->put('carrinho',$carrinho);
+        return redirect()->route('carrinho');
+    }
+
+    public function removeitem(Request $request, $id){
+        $carrinhoAntigo = Session::get('carrinho');
+        $carrinho = new Carrinho($carrinhoAntigo);
+        $carrinho->removeItem($id);
+
+        if(count($carrinho->items) == 0){
+            $request->session()->forget('carrinho');
+        }else{
+            $request->session()->put('carrinho',$carrinho);
+        }
+
+        return redirect()->route('carrinho');
     }
 }

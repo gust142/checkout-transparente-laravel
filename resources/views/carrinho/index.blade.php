@@ -76,7 +76,7 @@
                 <a  class="logo">Carrinho</a>
                 <div class="header-right">
                     </a>
-                    <a class="active"  href="{{route('produtos')}}">Continuar comprando</a>
+                    <a class="active"  href="{{route('homepage')}}">Continuar comprando</a>
                     <a class="active"  href="{{route('login.sair')}}">Sair</a>
                     
                 </div>
@@ -92,7 +92,15 @@
                           <h4 style="position:absolute; right:3%">Quantidade: {{$produto['qtd']}} {{$produto['qtd']>1?'unidades':'unidade'}}</h4>
                           <h4>{{$produto['item']['nome']}}</h4>
                           R$ {{$produto['valor']}},00
-                         
+                          <a  class="btn btn-success btn-lg" href="{{route('carrinho.add',$produto['item']['id'])}}" > 
+                               add
+                          </a>
+                          <a  class="btn btn-success btn-lg" href="{{route('carrinho.remove',$produto['item']['id'])}}" > 
+                               remove
+                          </a>
+                          <a  class="btn btn-danger btn-lg" href="{{route('carrinho.removeItem',$produto['item']['id'])}}" > 
+                              Remover Item
+                          </a>
                           </li>
 
                     @endforeach
