@@ -21,11 +21,13 @@ class HistoricoController extends Controller
         foreach($lista as $compra){
             $pagamento = (object) Pagamento::find($compra->pagamentoId);
             $comprasProduto = CompraProduto::where('compraId',$compra->id )->get();
-            $produtos;
+            $produtos = null;
             
 
             foreach($comprasProduto as $produto){
+               
                 $produtos[$produto->produtoId] = [
+                    "compra"=>$compra->id,
                     "id" => $produto->produtoId,
                     "quantidade" => $produto->quantidade,
                     "valor" => $produto->valor,
@@ -46,7 +48,8 @@ class HistoricoController extends Controller
             ];
         }
         
-
+        
+        // dd(CompraProduto::where('compraId',10)->get());
         return view('historico.index',compact('compras'));
     }
 }

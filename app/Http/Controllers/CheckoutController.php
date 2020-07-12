@@ -36,15 +36,15 @@ class CheckoutController extends Controller
         $dadosRequest = $request->all();
         
         $carrinhoAntigo = Session::get('carrinho');
-
+        $transportadoraRequest = json_decode($dadosRequest['transportadoraId']);
         
         $carrinho = new Carrinho($carrinhoAntigo); //informações do carrinho
         
         
-        //armazenar endereço
+        // armazenar endereço
         $enderecoCriado = Endereco::create(['descricao'=>$dadosRequest['endereco'],'userId'=>Auth::user()->id]);
         //procurar transportadora por id para buscar o valor do frete
-        $transportadora = Transportadora::find((integer)$dadosRequest['transportadoraId']);
+        $transportadora = Transportadora::find((integer)$transportadoraRequest->id);
         //inserção na tabela de pagamento
         $pagamento = Pagamento::create([
             'valor'=>$transportadora->valor + $carrinho->valorTotal ,

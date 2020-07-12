@@ -92,6 +92,15 @@
             $('#myModal').on('shown.bs.modal', function () {
                     $('#myInput').trigger('focus')
             })
+            var number = 0
+            function getNewVal(item)
+                { 
+                   obj = JSON.parse(item.value);
+                    number = parseInt(obj.valor);
+                    var valorFinal = number + {{$valorTotal}};
+                    console.log('valorfrete:'+ number + "valor dos produtos:"+ {{$valorTotal}} +'soma:' + valorFinal);
+                    $('#textoTotal').text('Total: R$ '+ valorFinal+",00" );
+                }
         </script>
     </head>
     <body>
@@ -121,7 +130,7 @@
                                 <div class="col-50">
                                     <h3></h3>
                                     <label for="fname"><i class="fa fa-user"></i>Selecione a Forma de Pagamento</label>
-                                    <select name="pagamentoId" class="form-control">
+                                    <select name="pagamentoId"  class="form-control">
                                         
                                         @foreach($pagamento as $pag)
                                         <option value="{{$pag->id}}">{{$pag->nome}}</option>
@@ -132,9 +141,9 @@
                                 <div class="col-50">
                                     <h3></h3>
                                     <label for="fname"><i class="fa fa-user"></i>Selecione a Transportadora</label>
-                                    <select name="transportadoraId" class="form-control" >
+                                    <select name="transportadoraId" onchange="getNewVal(this);" id="transportadora" class="form-control" >
                                         @foreach($transportadoras as $t)
-                                            <option value="{{$t->id}}">{{$t->nome}} Valor do frete: R$ {{$t->valor}},00</option>
+                                            <option value="{{$t}}">{{$t->nome}} Valor do frete: R$ {{$t->valor}},00</option>
                                         @endforeach
                                     </select>
                                     
@@ -164,7 +173,7 @@
                                                 @endforeach
                                             </ul>
                                             <div>
-                                            <h2 style="color:white;padding:2%;border-top:1px solid white">Total: R${{$valorTotal}},00</h2>
+                                            <h2 id="textoTotal" style="color:white;padding:2%;border-top:1px solid white"></h2>
                                             </div>
                                     </div>
                             </div> 
