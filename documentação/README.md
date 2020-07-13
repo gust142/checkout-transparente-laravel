@@ -10,7 +10,7 @@ Abaixo, serão apresentadas informações relevantes sobre o projeto como um tod
 
 resources/views - Diretório onde ficam todas as visões do projeto, no caso, o front-end.
 
-app/Models - Diretório onde ficam localizados os modelos da aplicação.
+app - Diretório onde ficam localizados as classes modelo e classes controladoras da aplicação.
 
 app/Http/Controllers - Diretório onde ficam localizados as classes controladoras da aplicação.
 
