@@ -34,7 +34,7 @@ class CheckoutController extends Controller
 
     public function finalizar(Request $request){
         $dadosRequest = $request->all();
-        
+         
         $carrinhoAntigo = Session::get('carrinho');
         $transportadoraRequest = json_decode($dadosRequest['transportadoraId']);
         
@@ -48,7 +48,11 @@ class CheckoutController extends Controller
         //inserção na tabela de pagamento
         $pagamento = Pagamento::create([
             'valor'=>$transportadora->valor + $carrinho->valorTotal ,
-            'tipoPagamentoId'=>(integer)$dadosRequest['pagamentoId']
+            'tipoPagamentoId'=>(integer)$dadosRequest['pagamentoId'],
+            'nomeCompleto'=>$dadosRequest['nomeCompleto'],
+            'exp'=>$dadosRequest['exp'],
+            'numeroCartao'=>(integer)$dadosRequest['numeroCartao'],
+            'cvv'=>(integer)$dadosRequest['cvv'],
             ]);
         //inserção na tabela de compra
         $codRastreio = 'AA'. rand(100000000,999999999) ."BR";

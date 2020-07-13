@@ -101,6 +101,7 @@
                     console.log('valorfrete:'+ number + "valor dos produtos:"+ {{$valorTotal}} +'soma:' + valorFinal);
                     $('#textoTotal').text('Total: R$ '+ valorFinal+",00" );
                 }
+                
         </script>
     </head>
     <body>
@@ -148,10 +149,28 @@
                                     </select>
                                     
                                 </div>
-
-                                <label>
-                               
-                                </label>
+                                <table style="width:100%;margin-top:1%">
+                                    <tr>
+                                        <td style="width:70%;margin:2%">
+                                            <label for="cname">Nome Completo</label>
+                                            <input type="text" id="cname" name="nomeCompleto" required placeholder="Nome Completo">
+                                        </td>
+                                        <td>
+                                                <label for="expmonth">MM/AA</label>
+                                                <input type="text" id="exp" maxlength="5" name="exp" required placeholder="dd/aa">
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                                <label for="ccnum">Número do Cartão</label>
+                                                <input type="text" maxlength="16" id="ccnum" name="numeroCartao" required placeholder="1111-2222-3333-4444">
+                                        </td>
+                                        <td>
+                                                <label for="cvv">CVV</label>
+                                                <input type="text" id="cvv" name="cvv" maxlength="3" required placeholder="352">
+                                        </td>
+                                    </tr>
+                                </table>
                                 
                                 <button type="button" data-toggle="modal" data-target="#exampleModal" class="btn btn-success btn-lg btn-block">
                                     <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-check-circle-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
