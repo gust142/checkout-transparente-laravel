@@ -121,15 +121,40 @@ body {
                     
                     @foreach($lista as $produto)
                           <li class="list-group-item">
-                          <a class="header-right btn btn-primary" href="{{route('produtos.add',['id' =>$produto->id])}}">
-                          <svg width="2em" height="2em" viewBox="0 0 16 16" class="bi bi-plus" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                              <path fill-rule="evenodd" d="M8 3.5a.5.5 0 0 1 .5.5v4a.5.5 0 0 1-.5.5H4a.5.5 0 0 1 0-1h3.5V4a.5.5 0 0 1 .5-.5z"/>
-                              <path fill-rule="evenodd" d="M7.5 8a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 0 1H8.5V12a.5.5 0 0 1-1 0V8z"/>
-                          </svg>
-                          </a>
-                          <h4>{{$produto->nome}}</h4>
-                          R$ {{$produto->valor}},00
-                          
+                          <article class="card card-product-list">
+                                        <div class="card-body">
+                                        <div class="row">
+                                          <aside class="col-sm-2">
+                                            <a  class="img-wrap"><img src="https://via.placeholder.com/180x180"></a>
+                                          </aside> <!-- col.// -->
+                                          <article class="col-sm-8">
+                                              <h4  class="title mt-2 h4">{{$produto->nome}}</4>
+                                              <div class="rating-wrap mb-3">
+                                                
+                                                <small class="label-rating text-muted">132 visualizações</small>
+                                                <small class="label-rating text-success">
+                                                  <i class="fa fa-clipboard-check"></i>  </small>
+                                              </div> <!-- rating-wrap.// -->
+                                              <p>Descrição do produto Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras sed metus ac tortor convallis interdum eget eget turpis. Nam ac malesuada justo. Interdum et malesuada fames ac ante ipsum primis in faucibus. Nunc pharetra aliquam nisi, et lobortis sapien porta at. Ut quis ornare erat. Pellentesque placerat augue ac cursus maximus. Maecenas ullamcorper dui sit amet urna maximus dictum. Aliquam in arcu vitae orci laoreet semper. In ut dui a nibh tempor euismod.</p>
+
+                                          </article> <!-- col.// -->
+                                          <aside class="col-sm-2">
+                                              <div class="price-wrap mt-2">
+                                                <span class="price h4"> R$ {{$produto->valor}},00 </span>
+                                                
+                                              </div> <!-- info-price-detail // -->
+
+                                              
+                                              <br>
+                                              <p>
+                                                <a href="{{route('produtos.add',['id' =>$produto->id])}}" class="btn btn-primary">Adicionar ao carrinho</a>
+                                                
+                                              </p>
+                                              
+                                          </aside> <!-- col.// -->
+                                        </div> <!-- row.// -->
+                                        </div> <!-- card-body .// -->
+                                    </article>
                           
                           </li>
 
