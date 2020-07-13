@@ -102,6 +102,7 @@ body {
                                     <table style="width:100%">
                                       <tr>
                                         <td style="width:60%;">
+                                            <h4><strong>Nome do Cliente:</strong> {{Auth::user()->name}}</h4>
                                             <h4><strong>Transportadora:</strong> {{$compra['transportadora']['nome']}}</h4>
                                             <h4><strong>Código de Rastreio:</strong> {{$compra['codRastreio']}}</h4>
                                             <h4><strong>Forma de Pagamento:</strong> {{$compra['tipoPagamento']['nome']}}</h4>
