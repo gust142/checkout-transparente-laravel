@@ -1,4 +1,4 @@
-# desafio
+# Checkout Transparente
 
 Projeto de Checkout Transparente desenvolvido em Laravel 5.3 com banco de dados SQLite.
 
